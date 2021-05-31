@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Image Colour Palette Generator</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;900&family=Pattaya:wght@400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/0f96146c13.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+
+    <!--    CSS Stylesheet-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}" type="text/css">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico')}}">
+
+</head>
+<body>
+
+<section class="header">
+    <div class="container-fluid">
+        <h1>Image Colour Palette Generator</h1>
+        <p>Generate a colour palette from an image URL</p>
+        <p>Check out colour palettes from some images from 'Unsplash.com'</p>
+    </div>
+</section>
+
+<section class="form-information">
+    <form action="{{url_for('upload_url') }}" method="POST">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-2 col-md-4 mx-auto">
+                <label for="image_url">Image URL:</label>
+            </div>
+            <div class="col-lg-8 col-md-4 mx-auto">
+                <input type="text" class="form-control input-field" id="image_url" name="image_url" placeholder="Copy image link here">
+            </div>
+            <div class="col-lg-2 col-md-4 mx-auto">
+                <button type="submit" class="btn btn-dark button">Upload URL</button>
+            </div>
+
+        </div>
+    </div>
+    </form>
+    <form action="{{url_for('update_granularity')}}" method="POST">
+    <div class="form-group">
+        <div class="row">
+
+            <div class="col-lg-2 col-md-4 mx-auto">
+            <label for="granularity">Colour Granularity:</label>
+            </div>
+            <div class="col-lg-8 col-md-4 mx-auto">
+            <select class="form-control input-field" id="granularity" name="granularity">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            </select>
+            </div>
+            <div class="col-lg-2 col-md-4 mx-auto">
+            <button type="submit" class="btn btn-dark button">Update Granularity</button>
+            </div>
+
+        </div>
+    </div>
+    </form>
+</section>
+
+<section class="main">
+    <div class="container-fluid main-container">
+        <div class="row">
+            <div class="col-xl-2 col-lg-1"></div>
+            <div class="col-xl-6 col-lg-7 col-md-9 col-sm-12 mx-auto image-div">
+                <img class="image" src={{image_loc}} alt="test image">
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-12 mx-auto colour-panel">
+
+                {% for hex in hex_dict: %}
+                <div class="row">
+                <div class="colour-box" style="background-color: {{ hex }}">
+                    <div class="hex-box" style="color: {{ hex }}">
+                    <p>{{ hex }}</p>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+
+            </div>
+            <div class="col-xl-2 col-lg-1"></div>
+        </div>
+    </div>
+</section>
+
+<section class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Kirsty Purdom 2021</p>
+        </div>
+      </div>
+    </div>
+</section>
+
+</body>
+</html>

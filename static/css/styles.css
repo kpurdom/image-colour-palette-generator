@@ -1,0 +1,98 @@
+body {
+  font-family: "Montserrat";
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat";
+  font-weight: bold;
+}
+
+.container-fluid {
+    margin: 50px;
+}
+
+
+/* Header */
+.header h1{
+    font-family: "Pattaya";
+    font-size: 3.5rem;
+    padding: 20px;
+}
+
+
+
+.header {
+    background-color: #c6fce5;
+    margin: 0;
+    padding: 75px;
+}
+
+/* Main Section */
+.main-container {
+    text-align: center;
+    padding: 30px;
+}
+
+
+.form-information {
+    padding: 75px 30px 0;
+}
+
+.form-group {
+    padding: 10px;
+}
+
+.button {
+    margin: 20px 0;
+}
+
+.image {
+    width: 100%;
+}
+
+.colour-box {
+    height: 75px;
+    width: 100%;
+    margin: 0;
+}
+
+@media only screen and (min-width: 767px) {
+    .colour-box {
+        width: 75%;
+        margin: 0 20px 0 0;
+    }
+
+    .image {
+        margin: 0 0 0 20px;
+        height: 100%;
+    }
+
+    .image-div {
+        text-align: right;
+        height: 750px;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.hex-box {
+    background-color: #fff;
+    float: right;
+    opacity: 0.7;
+    text-align: center;
+    padding: 5px;
+    width: 100px;
+    height: 35px;
+}
+
+/* Footer Section */
+.fa-stack {
+    color: black;
+    margin: 15px;
+}
+
+.footer {
+    background-color: #c6fce5;
+    padding: 20px;
+}
